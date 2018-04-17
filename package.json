@@ -7,7 +7,8 @@
     "test": "test",
     "babel-node": "babel-node",
     "dev": "nodemon --exec npm run babel-node -- ./src/index.js",
-    "crypt": "nodemon --exec npm run babel-node -- ./src/gatekeeper.js"
+    "crypt": "nodemon --exec npm run babel-node -- ./src/gatekeeper/gatekeeper.js",
+    "time": "npm run babel-node -- ./src/gatekeeper/timekeeper.js"
   },
   "author": "Leigh Barnes",
   "license": "MIT",
@@ -17,6 +18,7 @@
   },
   "dependencies": {
     "crypto-js": "^3.1.9-1",
+    "express": "^4.16.3",
     "nodemon": "^1.17.3",
     "sha256": "^0.2.0"
   }

@@ -1,10 +1,6 @@
 import CryptoJS from "crypto-js"
 import sha256 from "sha256"
-import gateKey from "./gatekeeper"
-
-const mockPreKey = "1234567890"
-const mockKey = sha256(mockPreKey)
-console.log(mockKey)
+import gateKey from "./gatekeeper/gatekeeper"
 
 const data = {
 	time: Date.now(),

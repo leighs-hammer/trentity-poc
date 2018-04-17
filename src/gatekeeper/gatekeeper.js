@@ -1,6 +1,7 @@
 import sha256 from "sha256"
+import {time} from "./startTime"
 
-const startDate = "1523995467928"
+const startDate = time // requires generation check npm scripts
 const passage = `What will you tell your children
 When they ask you "What went wrong?"
 How can you paint a picture of a paradise lost
@@ -24,4 +25,3 @@ There will be no future, if we can't learn`
 const primer = "Go Go GO"
 
 export const gateKey = sha256(JSON.stringify({startDate, passage, primer}))
-
