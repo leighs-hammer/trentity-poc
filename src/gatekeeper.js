@@ -24,3 +24,4 @@ There will be no future, if we can't learn`
 const primer = "Go Go GO"
 
 export const gateKey = sha256(JSON.stringify({startDate, passage, primer}))
+
