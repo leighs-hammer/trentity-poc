@@ -1,0 +1,23 @@
+{
+  "name": "truentity",
+  "version": "1.0.0",
+  "description": "Encrytpted object playground",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "babel-node": "babel-node",
+    "dev": "nodemon --exec npm run babel-node -- ./src/index.js",
+    "crypt": "nodemon --exec npm run babel-node -- ./src/gatekeeper.js"
+  },
+  "author": "Leigh Barnes",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  },
+  "dependencies": {
+    "crypto-js": "^3.1.9-1",
+    "nodemon": "^1.17.3",
+    "sha256": "^0.2.0"
+  }
+}
