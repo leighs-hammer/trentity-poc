@@ -1,21 +1,34 @@
-import CryptoJS from "crypto-js"
-import sha256 from "sha256"
-import gateKey from "./gatekeeper/gatekeeper"
+import express from "express"
+import bodyParser from "body-parser"
+import tokenvalidator from "./middlewares/tokenevaluator"
 
-const data = {
-	time: Date.now(),
-	message: "Some string message"
-}
+/**
+ * APP
+ */
+const app = express()
 
-// !!! pre message send
-const encMessage = CryptoJS.AES.encrypt(JSON.stringify(data), gateKey).toString()
-console.log(encMessage)
+app.listen(8000, () => console.log('Example app listening on port 8000!'))
 
-// Net work push
+// Parsers
+const jsonParser = bodyParser.json()
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-// !!! incoming message
+/**
+ * Root
+ */
 
-const decMessage = CryptoJS.AES.decrypt(encMessage.toString(), gateKey)
+app.get('/', function (req, res) {
+  res.send('request not authorized')
+})
 
-const OUTPUT = decMessage.toString(CryptoJS.enc.Utf8)
-console.log(OUTPUT)
+/**
+ * Token
+ */
+
+app.post('/token',urlencodedParser, function (req, res) {
+	const validation = tokenvalidator(req.body)
+	if (validation.error) {
+		return res.sendStatus(403, validation.message)
+	}
+  res.send(validation)
+})
